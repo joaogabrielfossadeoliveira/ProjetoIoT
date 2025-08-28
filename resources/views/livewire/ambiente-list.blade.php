@@ -67,6 +67,10 @@
                                     <a href="{{ route('ambiente.edit', $ambiente->id) }}" class="btn btn-sm btn-warning">
                                         <i class="bi bi-pencil"></i>
                                     </a>
+                                    <button wire:click="delete({{$ambiente->id}})"
+                                    class="btn btn-sm btn-danger" onclick="return confirm('Tem Certeza')">
+                                    <i class="bi bi-person-x-fill"></i>
+                                </button>
                                 </td>
                             </tr>
                         @empty

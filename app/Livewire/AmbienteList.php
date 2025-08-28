@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Ambiente;
+use App\Models\Sensor;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -28,5 +29,9 @@ class AmbienteList extends Component
             ->orWhere('status', 'like', "{$this->search}%")
             ->paginate($this->perPage);
         return view('livewire.ambiente-list', compact('ambientes'));
+    }
+    public function delete($id){
+        Ambiente::findOrFail($id)->delete();
+        session()->flash('message', 'ambiente deletado com sucesso');
     }
 }
