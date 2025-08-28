@@ -7,25 +7,39 @@ use Livewire\Component;
 
 class SensorEdit extends Component
 {
-    public $ambiente_id;
-    public $Codigo;
-    public $Tipo;
+   public $ambiente;
+    public $sensorId;
+    public $codigo;
+    public $tipo;
     public $descricao;
     public $status;
+
+    protected $rules = [
+        'tipo' => 'max:255',
+        'descricao' => 'max:255',
+    ];
+
+    protected $messages = [
+        'descricao.max' => 'Limite de caracteres ultrapassado',
+        'tipo.max' => 'Limite de caracteres ultrapassado.',
+
+
+    ];
 
     public function mount($id)
     {
 
-        $sensores = Sensor::find($id);
-        if ($sensores == null) {
+        $sensor = Sensor::find($id);
+        if ($sensor == null) {
             session()->flash('error', 'Ambiente não encontrado');
             return redirect()->route('ambiente.list');
         }
-        $this->ambiente_id = $sensores->id;
-        $this->Codigo = $sensores->Codigo;
-        $this->Tipo = $sensores->Tipo;
-        $this->descricao = $sensores->descricao;
-        $this->status = $sensores->Status;
+        $this->sensorId = $sensor->id;
+        $this->ambiente = $sensor->ambiente_id;
+        $this->codigo = $sensor->Codigo;
+        $this->tipo = $sensor->Tipo;
+        $this->descricao = $sensor->descricao;
+        $this->status = $sensor->Status;
     }
 
 
@@ -33,16 +47,18 @@ class SensorEdit extends Component
     {
 
 
-        $sensores = Sensor::find($this->ambiente_id);
+        $sensor = Sensor::find($this->sensorId);
 
-        $sensores->update([
-            'nome' => $this->nome,
-            'descricao' => $this->descricao,
-            'status' => $this->status,
+        $sensor->update([
+            $sensor->ambiente_id = $this->ambiente,
+            $sensor->descricao = $this->descricao,
+            $sensor->tipo = $this->tipo,
+            $sensor->codigo = $this->codigo,
+            $sensor->status = $this->status
         ]);
 
 
-        session()->flash('message', 'sensor atualizado com sucesso.');
+        session()->flash('message', 'Sensor atualizado com sucesso.');
         return redirect()->route('sensor.list');
     }
     public function render()
