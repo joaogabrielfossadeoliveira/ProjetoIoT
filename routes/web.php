@@ -1,8 +1,5 @@
 <?php
 
-use App\Livewire\AmbienteCreate;
-use App\Livewire\AmbienteEdit;
-use App\Livewire\AmbienteList;
 use App\Livewire\Dashboard;
 use App\Livewire\SensorCreate;
 use App\Livewire\SensorList;
@@ -12,12 +9,8 @@ Route::get('/', Dashboard::class);
 
 Route::get('/sensorcreate', SensorCreate::class);
 
-Route::get('/sensorlist', SensorList::class);
+Route::get('/sensorlist', SensorList::class)->name('sensor.list');
 
-Route::get('/ambienteEdit', AmbienteEdit::class);
-
-Route::get('/ambienteCreate', AmbienteCreate::class);
-
-Route::get('/ambiente/list', AmbienteList::class)->name('ambiente.list');
+Route::get('/sensoredit{id}', SensorList::class)->name('sensor.edit');
 
 

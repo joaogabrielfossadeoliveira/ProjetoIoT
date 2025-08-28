@@ -3,7 +3,7 @@
 
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center text-white">
-            <h2 class="text-dark d-flex flex-row justify-content-start mb-2" > Ambientes <i
+            <h2 class="text-dark d-flex flex-row justify-content-start mb-2" > Sensores <i
                     class="bi bi-person-fill"></i></h2>
 
           
@@ -12,7 +12,7 @@
             <div class="row mb-3">
                 <div class="col-md-6">
                     <input type="text" wire:model.live="search" class="form-control" wire:model.live="search"
-                        placeholder="Buscar Ambintes..." class="btn btn-primary">
+                        placeholder="Buscar sensores..." class="btn btn-primary">
                 </div>
 
                 <div class="col-md-3">
@@ -67,14 +67,14 @@
                                 <td>{{ $sensor->descricao }}</td>
                                 <td>{{ $sensor->status }}</td>
                                 <td>
-                                    <a href="{{ route('sensor.edit', $ambiente->id) }}" class="btn btn-sm btn-warning">
+                                    <a href="{{ route('sensor.edit', $sensor->id) }}" class="btn btn-sm btn-warning">
                                         <i class="bi bi-pencil"></i>
                                     </a>
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="text-center">Nenhum ambiente encontrado.</td>
+                                <td colspan="5" class="text-center">Nenhum sensor encontrado.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -82,7 +82,7 @@
             </div>
 
             <div class="mt-3">
-                {{ $ambientes->links() }}
+                {{ $sensores->links() }}
             </div>
         </div>
     </div>

@@ -9,10 +9,11 @@
 
                    <div>    
                     <label class="form-label"><i class="bi bi-clipboard"></i> Ambientes</label>
-                    <select class="form-select" aria-label="Status" wire:model='status'>
-                        <option hidden></option>
-                        <option value="1">ativo </option>
-                        <option value="0">inativo</option>
+                    <select class="form-select" aria-label="ambiente_id" wire:model='ambiente'>
+                        <option hidden>Selecione o seu ambiente</option>
+                        @foreach ($ambientes as $ambiente)
+                        <option value={{ $ambiente->id }}> {{ $ambiente->nome }} </option>
+                        @endforeach
                     </select>
                     @error('status')
                         <small class="text-danger">{{ $message }}</small>
@@ -20,7 +21,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label"><i class="bi bi-person"></i> Codigo</label>
-                    <input type="text" wire:model="Codigo" class="form-control">
+                    <input type="text" wire:model="codigo" class="form-control">
                     @error('Codigo')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -28,8 +29,8 @@
 
                 <div class="mb-3">
                     <label class="form-label"><i class="bi bi-credit-card"></i> Tipo</label>
-                    <input type="text" wire:model="Tipo" class="form-control">
-                    @error('Tipo')
+                    <input type="text" wire:model="tipo" class="form-control">
+                    @error('tipo')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
@@ -42,7 +43,7 @@
                 </div>
                 <div>
                     <label class="form-label"><i class="bi bi-clipboard"></i> Status</label>
-                    <select class="form-select" aria-label="Status" wire:model='status'>
+                    <select class="form-select" aria-label="status" wire:model='status'>
                         <option hidden></option>
                         <option value="1">ativo </option>
                         <option value="0">inativo</option>

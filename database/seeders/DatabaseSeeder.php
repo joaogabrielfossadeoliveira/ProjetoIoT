@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
 
        $this->call([
         AmbienteSeeder::class,
-        SensorSeeder::class,
         RegistroSeeder::class
 
        ]);
