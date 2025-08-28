@@ -32,4 +32,8 @@ class SensorList extends Component
 
         return view('livewire.sensor-list', compact('sensores'));    
     }
+    public function delete($id){
+        Sensor::findOrFail($id)->delete();
+        session()->flash('message', 'Sensor deletado com sucesso');
+    }
 }
