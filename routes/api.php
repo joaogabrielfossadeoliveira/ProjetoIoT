@@ -1,8 +1,7 @@
 <?php
 
+use App\Livewire\Registro\RegistroList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::get('/list/Registro ', RegistroList::class)->name('lista');
