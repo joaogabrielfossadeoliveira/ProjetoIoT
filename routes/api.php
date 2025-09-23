@@ -1,8 +1,6 @@
 <?php
 
+use App\Livewire\SensorList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::get('/sensorlist', SensorList::class)->name('sensor.list');
