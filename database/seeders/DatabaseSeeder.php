@@ -18,8 +18,14 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
        $this->call([
+          RegistroSeeder::class,
         AmbienteSeeder::class,
+
         RegistroSeeder::class
+
+        SensorSeeder::class
+      
+
 
        ]);
     }
