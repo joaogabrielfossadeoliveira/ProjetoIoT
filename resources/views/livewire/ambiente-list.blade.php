@@ -62,7 +62,7 @@
                             <tr>
                                 <td>{{ $ambiente->nome }}</td>
                                 <td>{{ $ambiente->descricao }}</td>
-                                <td>{{ $ambiente->status }}</td>
+                                <td>{{ $ambiente->status == 1 ? "ativo" : "inativo"}}</td>
                                 <td>
                                     <a href="{{ route('ambiente.edit', $ambiente->id) }}" class="btn btn-sm btn-warning">
                                         <i class="bi bi-pencil"></i>
