@@ -3,7 +3,7 @@
 
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center text-white">
-            <h2 class="text-dark d-flex flex-row justify-content-start mb-2" > Ambientes <i
+            <h2 class="text-dark d-flex flex-row justify-content-start mb-2" > Sensores <i
                     class="bi bi-person-fill"></i></h2>
 
           
@@ -12,7 +12,7 @@
             <div class="row mb-3">
                 <div class="col-md-6">
                     <input type="text" wire:model.live="search" class="form-control" wire:model.live="search"
-                        placeholder="Buscar Ambintes..." class="btn btn-primary">
+                        placeholder="Buscar sensores..." class="btn btn-primary">
                 </div>
 
                 <div class="col-md-3">
@@ -52,30 +52,34 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Nome</th>
+                            <th>Codigo</th>
+                            <th>Tipo</th>
                             <th>Descricao</th>
                             <th>Status</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($ambientes as $ambiente)
+                        @forelse($sensores as $sensor)
                             <tr>
-                                <td>{{ $ambiente->nome }}</td>
-                                <td>{{ $ambiente->descricao }}</td>
-                                <td>{{ $ambiente->status == 1 ? "ativo" : "inativo"}}</td>
+                                <td>{{ $sensor->codigo }}</td>
+                                <td>{{ $sensor->tipo }}</td>
+                                <td>{{ $sensor->descricao }}</td>
+                                <td>{{ $sensor->status }}</td>
                                 <td>
-                                    <a href="{{ route('ambiente.edit', $ambiente->id) }}" class="btn btn-sm btn-warning">
+                                    <a href="{{ route('sensor.edit', $sensor->id) }}" class="btn btn-sm btn-warning">
                                         <i class="bi bi-pencil"></i>
                                     </a>
-                                    <button wire:click="delete({{$ambiente->id}})"
+                                     <button wire:click="delete({{$sensor->id}})"
                                     class="btn btn-sm btn-danger" onclick="return confirm('Tem Certeza')">
                                     <i class="bi bi-person-x-fill"></i>
                                 </button>
+
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="text-center">Nenhum ambiente encontrado.</td>
+                                <td colspan="5" class="text-center">Nenhum sensor encontrado.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -83,7 +87,7 @@
             </div>
 
             <div class="mt-3">
-                {{ $ambientes->links() }}
+                {{ $sensores->links() }}
             </div>
         </div>
     </div>

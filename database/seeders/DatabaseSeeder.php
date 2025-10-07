@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
        $this->call([
-          RegistroSeeder::class,
+        
         AmbienteSeeder::class,
         SensorSeeder::class
       
