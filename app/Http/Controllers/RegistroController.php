@@ -9,15 +9,11 @@ use Illuminate\Http\Request;
 
 class RegistroController extends Controller
 {
-    //informar o código do sensor na request
-    //pesquisar o sensor por código (utilizar first ao invés de get)
-    //pegar o sensor->id e informar no create
-    //pegar data e hora do sistema
-    //na request enviar codigo do sensor, valor, unidade'
-
+   
+ 
     public function store(RegistroRequest $request){
 
- $sensor = Sensor::where('codigo', '='. $request->codigo)->first();
+ $sensor = Sensor::where('codigo', '=',  $request->cod_sensor)->first();
 if($sensor == null){
     return response()->json([
         'status' =>false,
@@ -29,9 +25,15 @@ if($sensor == null){
             'sensor_id' => $sensor->id,
             'valor' => $request->valor,
             'unidade' => $request->unidade,
-            'data_hora' => date('Y/m/d H:i:s')
+            'data_hora' => now()
         ]);
 
-        return $registro;
+       
+   
+        return response()->json([
+            'status' => true,
+            'success' => 'registro salvo com sucesso',
+            'data' => $registro
+        ],201);
     }
 }

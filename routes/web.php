@@ -10,10 +10,18 @@ use App\Livewire\SensorList;
 
 
 use App\Livewire\Registro\RegistroList;
+
+
 use App\Models\Sensor;
 use Illuminate\Support\Facades\Route;
 
+<<<<<<< HEAD
 Route::get('/list/Registro ', RegistroList::class)->name('registro.list');
+=======
+
+
+
+>>>>>>> f517e12367294b5cce3f9ce7de2312e2b1656df6
 
 
 
