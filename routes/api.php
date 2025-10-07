@@ -7,4 +7,4 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::post('/registro/controller', [RegistroController::class, "store"]);
+Route::post('/registro/create', [RegistroController::class, "store"]);
