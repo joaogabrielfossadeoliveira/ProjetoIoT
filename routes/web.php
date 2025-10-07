@@ -13,7 +13,7 @@ use App\Livewire\Registro\RegistroList;
 use App\Models\Sensor;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/list/Registro ', RegistroList::class)->name('lista');
+Route::get('/list/Registro ', RegistroList::class)->name('registro.list');
 
 
 

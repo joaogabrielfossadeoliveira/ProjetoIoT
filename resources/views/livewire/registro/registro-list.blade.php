@@ -68,7 +68,7 @@
                                 <td>{{ $registro->unidade }}</td>
                                 <td>{{ $registro->data_hora }}</td>
                                 <td>
-                                    <a href="{{ route('ambiente.edit', $registro->id) }}" class="btn btn-sm btn-warning">
+                                    <a href="{{ route('registro.list', $registro->id) }}" class="btn btn-sm btn-warning">
                                         <i class="bi bi-pencil"></i>
                                     </a>
                                     <button wire:click="delete({{$registro->id}})"
@@ -79,7 +79,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="text-center">Nenhum ambiente encontrado.</td>
+                                <td colspan="5" class="text-center">Nenhum registro encontrado.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -87,7 +87,7 @@
             </div>
 
             <div class="mt-3">
-                {{ $registro->links() }}
+                {{ $registros->links() }}
             </div>
         </div>
     </div>

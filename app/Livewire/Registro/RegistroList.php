@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Registro;
 
+use App\Models\Registro;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -22,13 +23,14 @@ class RegistroList extends Component
 
     public function render()
     {
-        $registro = RegistroList::where('nome', 'like', "{$this->search}%")
-            ->orWhere('status', 'like', "{$this->search}%")
+        $registros = Registro::where('sensor_id', 'like', "{$this->search}%")
+            ->orWhere('unidade', 'like', "{$this->search}%")
+            ->orderByDesc('id', 'sensor_id', 'unidade', 'valor', 'data_hora')
             ->paginate($this->perPage);
-        return view('livewire.registro.registro-list');
+        return view('livewire.registro.registro-list', compact('registros'));
     }
      public function delete($id){
-        RegistroList::findOrFail($id)->delete();
+        Registro::findOrFail($id)->delete();
         session()->flash('message', 'ambiente deletado com sucesso');
     }
 
