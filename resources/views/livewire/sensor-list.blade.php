@@ -1,12 +1,12 @@
 <div class="container mt-4">
-        
+
 
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center text-white">
-            <h2 class="text-dark d-flex flex-row justify-content-start mb-2" > Sensores <i
-                    class="bi bi-person-fill"></i></h2>
+            <h2 class="text-dark d-flex flex-row justify-content-start mb-2"> Sensores <i class="bi bi-person-fill"></i>
+            </h2>
 
-          
+
         </div>
         <div class="card-body">
             <div class="row mb-3">
@@ -67,13 +67,20 @@
                                 <td>{{ $sensor->descricao }}</td>
                                 <td>{{ $sensor->status }}</td>
                                 <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                        <label class="form-check-label" for="flexSwitchCheckDefault">On/Off</label>
+                                    </div>
+                                    <td />
                                     <a href="{{ route('sensor.edit', $sensor->id) }}" class="btn btn-sm btn-warning">
                                         <i class="bi bi-pencil"></i>
                                     </a>
-                                     <button wire:click="delete({{$sensor->id}})"
-                                    class="btn btn-sm btn-danger" onclick="return confirm('Tem Certeza')">
-                                    <i class="bi bi-person-x-fill"></i>
-                                </button>
+
+                                    <button wire:click="delete({{ $sensor->id }})" class="btn btn-sm btn-danger"
+                                        onclick="return confirm('Tem Certeza')">
+                                        <i class="bi bi-person-x-fill"></i>
+                                    </button>
+
 
                                 </td>
                             </tr>
