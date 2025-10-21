@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Sensor;
+use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -22,6 +23,7 @@ class SensorList extends Component
         'perPage' => ['except' => 10],
     ];
     
+    
 
     public function render()
     {
@@ -35,5 +37,11 @@ class SensorList extends Component
     public function delete($id){
         Sensor::findOrFail($id)->delete();
         session()->flash('message', 'Sensor deletado com sucesso');
+    }
+      public function toggleStatus($id){
+
+        $sensor = Sensor::findOrFail($id);
+        $sensor->status = !$sensor->status;
+        $sensor->save();
     }
 }

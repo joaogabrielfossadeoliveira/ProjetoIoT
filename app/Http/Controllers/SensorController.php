@@ -7,37 +7,45 @@ use Illuminate\Http\Request;
 
 class SensorController extends Controller
 {
-   public function find(Request $request)
+    public function find(Request $request)
     {
 
-           $sensor = Sensor::where('codigo', '=', $request->codigo)->first();
-           if ($sensor == null) { // Verifica se um sensor foi encontrado.
+        $sensor = Sensor::where('codigo', '=', $request->codigo)->first();
+        if ($sensor == null) { // Verifica se um sensor foi encontrado.
             return response()->json([
                 'status' => false,
-                'message'=>'status não encontrado'
+                'message' => 'status não encontrado'
             ]);
         }
         return response()->json([
-                'status' => true,
-                'message'=>'status encontrado',
-                'data'=> $sensor->status
-            ]);
+            'status' => true,
+            'message' => 'status encontrado',
+            'data' => $sensor->status
+        ]);
     }
 
-    public function update(Request $request){
-        $sensor = Sensor::where('codigo', '=',$request->codigo)->first();
-        if($sensor == null){
+    public function update(Request $request)
+    {
+        $sensor = Sensor::where('codigo', '=', $request->codigo)->first();
+        if ($sensor == null) {
             return response()->json([
                 'status' => false,
-                'message'=> 'nao foi possivel'
+                'message' => 'nao foi possivel'
 
             ]);
         }
 
-        $sensor->update(['status'=> $request->status]);
+        $sensor->update(['status' => $request->status]);
         return response()->json([
             'message' => 'codigo do sensor atualizado com sucesso',
             'status' => true
+        ]);
+    }
+    public function ledStatus()
+    {
+        $sensor = Sensor::latest()->first();
+        return response()->json([
+            'estado' => (bool) $sensor->status
         ]);
     }
 }

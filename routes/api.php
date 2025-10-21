@@ -18,6 +18,7 @@ Route::post('/registro/create', [RegistroController::class, "store"]);
 
 Route::post('/registro/controller', [RegistroController::class, "store"]);
 
-
-Route::get('/sensor', [SensorController::class, "find"]);
+Route::get('/sensor/s2/find', [SensorController::class, "find"]);
 Route::put('/sensor/update', [SensorController::class, "update"]);
+
+

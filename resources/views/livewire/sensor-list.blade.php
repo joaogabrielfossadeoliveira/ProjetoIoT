@@ -1,6 +1,5 @@
 <div class="container mt-4">
 
-
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center text-white">
             <h2 class="text-dark d-flex flex-row justify-content-start mb-2"> Sensores <i class="bi bi-person-fill"></i>
@@ -65,13 +64,18 @@
                                 <td>{{ $sensor->codigo }}</td>
                                 <td>{{ $sensor->tipo }}</td>
                                 <td>{{ $sensor->descricao }}</td>
-                                <td>{{ $sensor->status }}</td>
+                                <td class="align-middle">
+                                    <span class="badge {{$sensor->status == 1 ? 'bg-success' : 'bg-secondary'}}">{{$sensor -> status == 1 ? 'Ativo' : 'Inativo'}}</span>
+                                </td>
+                                <td class="align-middle">
+                                    <button wire:click="toggleStatus({{$sensor->id}})" class="btn btn-sm {{ $sensor->status == 1 ? 'btn-danger' : 'btn-success'}}">
+                                        {{$sensor->status == 1 ? 'Desativar' : 'Ativar'}}
+                                    </button>
+                                </td>
+                                <td>{{ $sensor->status }} <label>
+                                       
                                 <td>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                        <label class="form-check-label" for="flexSwitchCheckDefault">On/Off</label>
-                                    </div>
-                                    <td />
+                                    
                                     <a href="{{ route('sensor.edit', $sensor->id) }}" class="btn btn-sm btn-warning">
                                         <i class="bi bi-pencil"></i>
                                     </a>
