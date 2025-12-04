@@ -13,6 +13,23 @@ class AmbienteEdit extends Component
     public $descricao;
     public $status;
 
+
+     protected $rules = [
+        'nome' => 'required',
+        'descricao' => 'required',
+          'nome'=> 'max:255',
+        'descricao' => 'max:255',
+       
+        
+    ];
+
+    protected $messages = [
+        'nome.required' => 'O campo é obrigatório',
+        'descricao.required' => 'O campo é obrigatório',
+          'nome.max' => 'o campo tem um maximo de 255 caracteres',
+        'descricao.max' => 'o campo descricao tem um maximo de 255 caracteres',
+      
+    ];
     public function mount($id)
     {
 
